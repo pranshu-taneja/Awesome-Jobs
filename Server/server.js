@@ -1,10 +1,12 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
-const port = 5000;
+require('dotenv').config();
 
+const port = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
+
 
 // https://jsonplaceholder.typicode.com/todos
 // https://6446405fee791e1e29fa0001.mockapi.io/card-detail
