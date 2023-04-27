@@ -96,7 +96,7 @@ app.post("/post", async(req,res)=>{
 
 app.get("/", async (req, res) => {
   try {
-    res.send("Hello Worrld!!");
+    res.json({message:"Hello from the express server!!"});
   } catch (err) {
     console.log(err);
   }
