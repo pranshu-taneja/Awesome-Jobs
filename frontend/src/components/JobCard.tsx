@@ -32,7 +32,7 @@ export default function JobCard({
   ApplyType,
 }: CardStructer) {
   return (
-    <div className="border-CardBorder border rounded-[10px] w-[830px] h-[320px] px-[24px] py-[16px] bg-white flex flex-row">
+    <div className="border-CardBorder border rounded-[10px] w-[830px] h-[320px] px-[24px] py-[16px] bg-white flex flex-row m-10">
       <img
         src={NetflixImage}
         alt="Netflix Logo"
@@ -45,7 +45,7 @@ export default function JobCard({
         </p>
         <p className="font-[16px]/[24px] font-poppins">{CompanyName}</p>
         <p className="font-[16px]/[24px] font-poppins text-pholder">
-          {Location} {RemoteType}
+          {Location} ({RemoteType})
         </p>
         <div className="h-[24px]"></div>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
@@ -64,12 +64,28 @@ export default function JobCard({
 
         {/* Button Adding */}
         <div className="flex justify-between">
-          <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
+          {ApplyType === "" ? (
+            <div>
+              <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
+                Apply Now
+              </button>
+              <button className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border">
+                External Apply
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
+                {ApplyType}
+              </button>
+            </div>
+          )}
+          {/* <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
             Apply Now
           </button>
           <button className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border">
             External Apply
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

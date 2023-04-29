@@ -128,7 +128,7 @@ export default function CreateJob2({
             type="radio"
             value={ApplyType}
             onChange={() => {
-              UpdateFields({ ApplyType: "Extenal" });
+              UpdateFields({ ApplyType: "Extenal Apply" });
             }}
           />
           <label
