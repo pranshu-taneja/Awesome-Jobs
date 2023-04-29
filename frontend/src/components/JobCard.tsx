@@ -23,7 +23,7 @@ type CardStructer = {
 export default function JobCard({
   JobTitle,
   CompanyName,
-  Industry,
+  // Industry,
   Location,
   RemoteType,
   Experience,
