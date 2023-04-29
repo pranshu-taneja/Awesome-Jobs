@@ -1,6 +1,36 @@
 import NetflixImage from "../assets/netflix.png";
 
-export default function JobCard() {
+type CardStructer = {
+  JobTitle: string;
+  CompanyName: string;
+  Industry: string;
+  Location: string;
+  RemoteType: string;
+
+  // step 2 data
+  Experience: {
+    min: number;
+    max: number;
+  };
+  Salary: {
+    min: number;
+    max: number;
+  };
+  TotalEmployee: number;
+  ApplyType: string;
+};
+
+export default function JobCard({
+  JobTitle,
+  CompanyName,
+  Industry,
+  Location,
+  RemoteType,
+  Experience,
+  Salary,
+  TotalEmployee,
+  ApplyType,
+}: CardStructer) {
   return (
     <div className="border-CardBorder border rounded-[10px] w-[830px] h-[320px] px-[24px] py-[16px] bg-white flex flex-row">
       <img
@@ -11,26 +41,24 @@ export default function JobCard() {
 
       <div id="Details" className="">
         <p className="font-[400] font-poppins text-[24px]/[32px] text-FontColor">
-          UX UI Designer
+          {JobTitle}
         </p>
-        <p className="font-[16px]/[24px] font-poppins">
-          Great Vibes - Information Technology
-        </p>
+        <p className="font-[16px]/[24px] font-poppins">{CompanyName}</p>
         <p className="font-[16px]/[24px] font-poppins text-pholder">
-          Chennai, Tamilnadu, India (In-office)
+          {Location} {RemoteType}
         </p>
         <div className="h-[24px]"></div>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
           Part-Time (9.00 am - 5.00 pm IST)
         </p>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
-          Experience (1 - 2 years)
+          Experience ({Experience.min} - {Experience.max} years)
         </p>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
-          INR (₹) 30,000 - 50,000 / Month
+          INR (₹) {Salary.min} - {Salary.max} / Month
         </p>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
-          51-200 employees
+          {TotalEmployee} employees
         </p>
         <div className="h-[24px]"></div>
 
