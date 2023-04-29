@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon index.js"
   },
   "name": "index",
   "version": "1.0.0",
