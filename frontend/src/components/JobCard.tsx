@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NetflixImage from "../assets/netflix.png";
+import axios from "axios";
 
 type CardStructer = {
   JobTitle: string;
@@ -53,13 +54,16 @@ export default function JobCard({
   }
 
   function PutData() {
-    fetch(`https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(CardData),
-    });
+    axios.put(
+      `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`,
+      CardData
+    );
+  }
+
+  function DeleteData() {
+    axios.delete(
+      `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`
+    );
   }
 
   return (
@@ -236,6 +240,15 @@ export default function JobCard({
                 }}
               >
                 {CardData.ApplyType}
+              </button>
+
+              <button
+                className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border"
+                onClick={() => {
+                  DeleteData();
+                }}
+              >
+                Bullshit
               </button>
             </div>
           )}
