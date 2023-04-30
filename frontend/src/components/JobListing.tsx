@@ -21,6 +21,7 @@ type CardStructer = {
   };
   TotalEmployee: number;
   ApplyType: string;
+  id: string;
 };
 
 export default function JobListing() {
@@ -32,12 +33,11 @@ export default function JobListing() {
         "https://6446405fee791e1e29fa0001.mockapi.io/card-detail"
       );
       setJobList(response.data);
-      console.log(JobList);
     }
     getJobs();
   }, []);
 
-
+  
   return (
     <div>
       <div className="flex flex-row flex-wrap justify-around">
