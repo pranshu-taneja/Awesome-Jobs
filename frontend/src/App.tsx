@@ -9,8 +9,8 @@ function App() {
       <div className="flex h-[100vh] justify-center">
         <div>
           <Routes>
-            <Route path="/" element={<Form/>}></Route>
-            <Route path="/joblisting" element={<JobListing/>}></Route>
+            <Route path="/" element={<Form />}></Route>
+            <Route path="/joblisting" element={<JobListing />}></Route>
           </Routes>
         </div>
       </div>

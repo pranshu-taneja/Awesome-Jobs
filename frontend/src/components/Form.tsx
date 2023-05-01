@@ -51,6 +51,7 @@ const Intial_Data: FormData = {
 export default function Form() {
   const [data, setdata] = useState(Intial_Data);
 
+
   //------------------- Functionality of how data will be updated with state -------------------
   function UpdateFields(fields: Partial<FormData>) {
     setdata((prev) => {
@@ -93,33 +94,61 @@ export default function Form() {
   }
   //------------------- Posting data using axios -------------------
 
+  //------------------- State Management for Pop Up of Form -------------------
+  const [isHidden, setIsHidden] = useState(true);
+  
+  const toggleCardVisibility = () => {
+    setIsHidden(!isHidden);
+  };
+  //------------------- State Management for Pop Up of Form -------------------
+
   return (
-    <div className="top-32 relative w-[577px] h-[564px] bg-white flex flex-col rounded-[10px] border-CardBorder p-8 border">
-      <form onSubmit={onSubmit}>
-        <div className="flex justify-between flex-row mb-[24px]">
-          <p className="font-poppins font-[400] text-[20px]/[28px]">
-            Create a job
-          </p>
-          <p className="relative font-poppins font-[500] text-[16px]/[24px] top-[2px]">
-            Step {currentStepIndex + 1}
-          </p>
-        </div>
+    <div>
+      
+      {/* //------------------- Toggle Form Visibility ------------------- */}
+      <button 
+        className="fixed top-16 left-16 rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
+        onClick={toggleCardVisibility}
+        >
+          Create Job
+      </button>
+      {/* //------------------- Toggle Form Visibility ------------------- */}
 
-        {/* Input Fields */}
-        {step}
-        {/* Input Fields */}
+      {/* //------------------- Form ------------------- */}
+      <div 
+      className={`top-32 relative w-[577px] h-[564px] bg-white flex-col rounded-[10px] border-CardBorder p-8 border ${isHidden ? 'hidden' : ''}`}
+      >
+        <form onSubmit={onSubmit}>
+          <div className="flex justify-between flex-row mb-[24px]">
+            <p className="font-poppins font-[400] text-[20px]/[28px]">
+              Create a job
+            </p>
+            <p className="relative font-poppins font-[500] text-[16px]/[24px] top-[2px]">
+              Step {currentStepIndex + 1}
+            </p>
+          </div>
 
-        {/* //------------------- Next Button ------------------- */}
-        <div className="flex justify-end mt-[86px] font-poppins">
-          <button
-            className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
-            type="submit"
-          >
-            {!isLastStep ? "Next" : "Save"}
-          </button>
-        </div>
-        {/* //------------------- Next Button ------------------- */}
-      </form>
+          
+          {/* Input Fields */}
+          {step}
+          {/* Input Fields */}
+
+
+          {/* //------------------- Next Button ------------------- */}
+          <div className="flex justify-end mt-[86px] font-poppins">
+            <button
+              className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
+              type="submit"
+            >
+              {!isLastStep ? "Next" : "Save"}
+            </button>
+          </div>
+          {/* //------------------- Next Button ------------------- */}
+        </form>
+      </div>
+      {/* //------------------- Form ------------------- */}
+
+
     </div>
     // </div>
   );
