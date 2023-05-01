@@ -42,6 +42,12 @@ export default function JobCard({...DataFetched}: CardStructer) {
 
   //------------------- Update Operation functionality -------------------
   async function PutData() {
+
+    if(CardData.JobTitle === "" || CardData.CompanyName === "" || CardData.Industry === "") {
+      alert("Please fill all the fields");
+      window.location.reload();
+    }
+
     try {
       await axios.put(
         `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`,
@@ -85,6 +91,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
           <input
             type="text"
             disabled={isDisabled}
+            required
             style={{ width: `${CardData.JobTitle.length}ch` }}
             className="font-[400] font-poppins text-[24px]/[32px] text-FontColor"
             value={CardData.JobTitle}
@@ -116,6 +123,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
           <input
             type="text"
             disabled={isDisabled}
+            required
             className="font-[400] font-[16px]/[24px] font-poppins"
             style={{ width: `${CardData.CompanyName.length + 1}ch` }}
             value={CardData.CompanyName}
@@ -127,11 +135,12 @@ export default function JobCard({...DataFetched}: CardStructer) {
           <input
             type="text"
             disabled={isDisabled}
+            required
             className="font-[400] font-[16px]/[24px] font-poppins inline"
             style={{ width: `${CardData.Industry.length + 1}ch` }}
             value={CardData.Industry}
             onChange={(e) => {
-              UpdateFields({ CompanyName: e.target.value });
+              UpdateFields({ Industry: e.target.value });
             }}
           />
         </div>
