@@ -1,6 +1,8 @@
 import { useState } from "react";
 import NetflixImage from "../assets/netflix.png";
 import axios from "axios";
+import EDIT2 from "../assets/edit2.png";
+import DELETE from "../assets/delete.png";
 
 type CardStructer = {
   JobTitle: string;
@@ -47,23 +49,42 @@ export default function JobCard({
     id: id,
   });
 
+  const [isDisabled, setisDisabled] = useState(true);
+
   function UpdateFields(fields: Partial<CardStructer>) {
     setCardData((prev) => {
       return { ...prev, ...fields };
     });
   }
 
-  function PutData() {
-    axios.put(
-      `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`,
-      CardData
-    );
+  async function PutData() {
+    try{
+      await axios.put(
+        `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`,
+        CardData
+      )
+      alert("Data Updated Successfully")
+      window.location.reload();
+    }
+    catch(err){
+      console.log({ERROR: err});
+      alert("Some Error Occured")
+    }
   }
+  
+  async function DeleteData() {
+    try{
+      await axios.delete(
+        `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`
+        )
+        alert("Data Deleted Successfully");
+        window.location.reload();
+    }
+    catch(err){
+      console.log({Error: err});
+      alert("Some Error Occured")
+    }
 
-  function DeleteData() {
-    axios.delete(
-      `https://6446405fee791e1e29fa0001.mockapi.io/card-detail/${CardData.id}`
-    );
   }
 
   return (
@@ -76,23 +97,39 @@ export default function JobCard({
 
       {/* //------------------- JobTitle ------------------- */}
       <div id="Details" className="">
-        <input
-          type="text"
-          className="font-[400] font-poppins text-[24px]/[32px] text-FontColor"
-          value={CardData.JobTitle}
-          onChange={(e) => {
-            UpdateFields({ JobTitle: e.target.value });
-          }}
-        />
+        <div className="flex justify-between">
+          <input
+            type="text"
+            disabled={isDisabled}
+            style={{ width: `${CardData.JobTitle.length}ch` }}
+            className="font-[400] font-poppins text-[24px]/[32px] text-FontColor"
+            value={CardData.JobTitle}
+            onChange={(e) => {
+              UpdateFields({ JobTitle: e.target.value });
+            }}
+          />
+          <button onClick={setisDisabled.bind(null, !isDisabled)}>
+            <img src={EDIT2} alt="Edit" className="w-[28px] h-[28px] " />
+          </button>
+
+          <button
+            onClick={() => {
+              DeleteData();
+            }}
+          >
+            <img src={DELETE} alt="Edit" className="w-[28px] h-[28px] " />
+          </button>
+        </div>
         {/* <p className="font-[400] font-poppins text-[24px]/[32px] text-FontColor">
           {CardData.JobTitle}
         </p> */}
         {/* //------------------- JobTitle ------------------- */}
-
         {/* //------------------- Company Name ------------------- */}
         <input
           type="text"
+          disabled={isDisabled}
           className="font-[16px]/[24px] font-poppins block"
+          style={{ width: `${CardData.CompanyName.length + 1}ch` }}
           value={CardData.CompanyName}
           onChange={(e) => {
             UpdateFields({ CompanyName: e.target.value });
@@ -100,29 +137,33 @@ export default function JobCard({
         />
         {/* <p className="font-[16px]/[24px] font-poppins">{CompanyName}</p> */}
         {/* //------------------- Company Name ------------------- */}
-
         {/* //------------------- RemoteType & Location ------------------- */}
         <input
           type="text"
           className="font-[16px]/[24px] font-poppins text-pholder"
+          style={{ width: `${CardData.Location.length + 1}ch` }}
           value={CardData.Location}
+          disabled={isDisabled}
           onChange={(e) => {
             UpdateFields({ Location: e.target.value });
           }}
         />
+        (
         <input
           type="text"
-          className="font-[16px]/[24px] font-poppins text-pholder"
+          disabled={isDisabled}
+          style={{ width: `${CardData.RemoteType.toString().length}ch` }}
+          className="font-[16px]/[24px] font-poppins text-pholder text-center"
           value={CardData.RemoteType}
           onChange={(e) => {
             UpdateFields({ RemoteType: e.target.value });
           }}
         />
+        )
         {/* <p className="font-[16px]/[24px] font-poppins text-pholder">
             {CardData.Location} ({CardData.RemoteType})
           </p> */}
         {/* //------------------- RemoteType & Location ------------------- */}
-
         {/* //------------------- Apply Type ------------------- */}
         <div className="h-[24px]"></div>
         <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
@@ -132,6 +173,8 @@ export default function JobCard({
           Experience (
           <input
             type="text"
+            disabled={isDisabled}
+            style={{ width: `${CardData.Experience.min.toString().length}ch` }}
             className="font-[16px]/[24px] font-poppins"
             value={CardData.Experience.min}
             onChange={(e) => {
@@ -146,7 +189,10 @@ export default function JobCard({
           -
           <input
             type="text"
+            disabled={isDisabled}
             className="font-[16px]/[24px] font-poppins"
+            style={{ width: `${CardData.Experience.max.toString().length}ch` }}
+            size={CardData.Experience.max.toString().length}
             value={CardData.Experience.max}
             onChange={(e) => {
               UpdateFields({
@@ -157,20 +203,21 @@ export default function JobCard({
               });
             }}
           />
-          years)
+          &nbsp;years)
         </div>
         {/* <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
           Experience ({CardData.Experience.min} - {CardData.Experience.max}{" "}
           years)
         </p> */}
         {/* //------------------- Apply Type ------------------- */}
-
         {/* //------------------- Salary ------------------- */}
         <div className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
-          INR (₹)
+          INR (₹)&nbsp;
           <input
             type="text"
+            disabled={isDisabled}
             className="font-[16px]/[24px] font-poppins"
+            style={{ width: `${CardData.Salary.min.toString().length}ch` }}
             value={CardData.Salary.min}
             onChange={(e) => {
               UpdateFields({
@@ -181,10 +228,13 @@ export default function JobCard({
               });
             }}
           />
-          -
+          - &nbsp;
           <input
             type="text"
+            disabled={isDisabled}
+            style={{ width: `${CardData.Salary.max.toString().length}ch` }}
             className="font-[16px]/[24px] font-poppins"
+            size={CardData.Salary.max.toString().length - 3}
             value={CardData.Salary.max}
             onChange={(e) => {
               UpdateFields({
@@ -201,18 +251,26 @@ export default function JobCard({
           INR (₹) {CardData.Salary.min} - {CardData.Salary.max} / Month
         </p> */}
         {/* //------------------- Salary ------------------- */}
-
         {/* //------------------- Total Employees ------------------- */}
         <div className="inline font-[16px]/[24px] font-[400] font-poppins text-FontColor">
           <input
             type="text"
-            className="font-[16px]/[24px] font-poppins"
+            disabled={isDisabled}
+            style={{ width: `${CardData.TotalEmployee.toString().length}ch` }}
+            className={`font-[16px]/[24px] font-poppins`}
+            // onInput={(e) => {
+            //   if (
+            //     e.target.value.length > CardData.TotalEmployee.toString().length
+            //   ) {
+            //     e.target.style.width = `${e.target.value.length}ch`;
+            //   }
+            // }}
             value={CardData.TotalEmployee}
             onChange={(e) => {
               UpdateFields({ TotalEmployee: parseInt(e.target.value) });
             }}
           />
-          employees
+          &nbsp;employees
         </div>
         {/* <p className="font-[16px]/[24px] font-[400] font-poppins text-FontColor">
           {CardData.TotalEmployee} employees
@@ -232,26 +290,31 @@ export default function JobCard({
             </div>
           ) : (
             <div>
-              <button
-                className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
-                onClick={() => {
-                  console.log(CardData);
-                  PutData();
-                }}
-              >
+              <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
                 {CardData.ApplyType}
               </button>
 
-              <button
+              {/* <button
                 className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border"
                 onClick={() => {
                   DeleteData();
                 }}
               >
-                Bullshit
-              </button>
+                Delete
+              </button> */}
             </div>
           )}
+          <div>
+            <button 
+            className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border"
+            hidden={isDisabled}
+            onClick={()=>{
+              PutData();
+            }}
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
