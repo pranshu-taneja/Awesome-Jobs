@@ -1,13 +1,13 @@
 type UserData = {
   Experience: {
-    min: number;
-    max: number;
+    min: string;
+    max: string;
   };
   Salary: {
-    min: number;
-    max: number;
+    min: string;
+    max: string;
   };
-  TotalEmployee: number;
+  TotalEmployee: string;
   ApplyType: string;
 };
 type UserFormProps = UserData & {
@@ -29,12 +29,12 @@ export default function CreateJob2({
           <input
             placeholder="Minimum"
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-bdrcolor font-poppins"
-            type="number"
+            type="string"
             value={Experience.min}
             onChange={(e) => {
               UpdateFields({
                 Experience: {
-                  min: Number(e.target.value),
+                  min: (e.target.value),
                   max: Experience.max,
                 },
               });
@@ -43,13 +43,13 @@ export default function CreateJob2({
           <input
             placeholder="Maximum"
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-bdrcolor font-poppins"
-            type="number"
+            type="string"
             value={Experience.max}
             onChange={(e) => {
               UpdateFields({
                 Experience: {
                   min: Experience.min,
-                  max: Number(e.target.value),
+                  max: (e.target.value),
                 },
               });
             }}
@@ -63,22 +63,22 @@ export default function CreateJob2({
           <input
             placeholder="Minimum"
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-bdrcolor font-poppins"
-            type="number"
+            type="string"
             value={Salary.min}
             onChange={(e) => {
               UpdateFields({
-                Salary: { min: Number(e.target.value), max: Salary.max },
+                Salary: { min: (e.target.value), max: Salary.max },
               });
             }}
           />
           <input
             placeholder="Maximum"
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-bdrcolor font-poppins"
-            type="number"
+            type="string"
             value={Salary.max}
             onChange={(e) => {
               UpdateFields({
-                Salary: { min: Salary.min, max: Number(e.target.value) },
+                Salary: { min: Salary.min, max: (e.target.value) },
               });
             }}
           />
@@ -92,10 +92,10 @@ export default function CreateJob2({
         <input
           placeholder="ex. 100"
           className="rounded-[5px] w-[513px] h-[36px] py-[8px] px-[12px] border border-bdrcolor font-poppins"
-          type="number"
+          type="string"
           value={TotalEmployee}
           onChange={(e) => {
-            UpdateFields({ TotalEmployee: Number(e.target.value) });
+            UpdateFields({ TotalEmployee: (e.target.value) });
           }}
         />
       </div>
