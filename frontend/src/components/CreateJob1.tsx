@@ -4,46 +4,66 @@ type UserData = {
   Industry: string;
   Location: string;
   RemoteType: string;
-}
+};
 type UserFormProps = UserData & {
-  UpdateFields: (fields: Partial<UserData>)=>void  
-}
+  UpdateFields: (fields: Partial<UserData>) => void;
+};
 
-function CreateJob1({JobTitle, CompanyName, Industry, Location, RemoteType, UpdateFields} : UserFormProps ) {
+function CreateJob1({
+  JobTitle,
+  CompanyName,
+  Industry,
+  Location,
+  RemoteType,
+  UpdateFields,
+}: UserFormProps) {
   return (
     <div>
       <div className="flex flex-col mb-[24px]">
-        <p className="text-[14px]/[20px] font-poppins font-[500]">Job Title</p>
+        <p className="text-[14px]/[20px] font-poppins font-[500]">
+          Job title<span className="text-Error">*</span>
+        </p>
         <input
           placeholder="ex. UX UI Designer"
           className="rounded-[5px] w-[513px] h-[36px] py-[8px] px-[12px] border border-CardBorder font-poppins"
           type="text"
           value={JobTitle}
-          onChange={e=>{UpdateFields({JobTitle: e.target.value})}}
+          required
+          onChange={(e) => {
+            UpdateFields({ JobTitle: e.target.value });
+          }}
         />
       </div>
 
       <div className="flex flex-col mb-[24px]">
         <p className="text-[14px]/[20px] font-poppins font-[500]">
-          Company Name
+          Company Name<span className="text-Error">*</span>
         </p>
         <input
           placeholder="ex. Google"
           className="rounded-[5px] w-[513px] h-[36px] py-[8px] px-[12px] border border-CardBorder font-poppins"
           type="text"
+          required
           value={CompanyName}
-          onChange={e=>{UpdateFields({CompanyName: e.target.value})}}
+          onChange={(e) => {
+            UpdateFields({ CompanyName: e.target.value });
+          }}
         />
       </div>
 
       <div className="flex flex-col mb-[24px]">
-        <p className="text-[14px]/[20px] font-poppins font-[500]">Industry</p>
+        <p className="text-[14px]/[20px] font-poppins font-[500]">
+          Industry<span className="text-Error">*</span>
+        </p>
         <input
           placeholder="ex. Information Technology"
           className="rounded-[5px] w-[513px] h-[36px] py-[8px] px-[12px] border border-CardBorder font-poppins"
           type="text"
+          required
           value={Industry}
-          onChange={e=>{UpdateFields({Industry: e.target.value})}}
+          onChange={(e) => {
+            UpdateFields({ Industry: e.target.value });
+          }}
         />
       </div>
 
@@ -55,7 +75,9 @@ function CreateJob1({JobTitle, CompanyName, Industry, Location, RemoteType, Upda
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-CardBorder font-poppins"
             type="text"
             value={Location}
-            onChange={e=>{UpdateFields({Location: e.target.value})}}
+            onChange={(e) => {
+              UpdateFields({ Location: e.target.value });
+            }}
           />
         </div>
         <div>
@@ -67,7 +89,9 @@ function CreateJob1({JobTitle, CompanyName, Industry, Location, RemoteType, Upda
             className="rounded-[5px] w-[244.5px] h-[36px] py-[8px] px-[12px] border border-CardBorder font-poppins"
             type="text"
             value={RemoteType}
-            onChange={e=>{UpdateFields({RemoteType: e.target.value})}}
+            onChange={(e) => {
+              UpdateFields({ RemoteType: e.target.value });
+            }}
           />
         </div>
       </div>
