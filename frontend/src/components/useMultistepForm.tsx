@@ -1,38 +1,33 @@
 import { ReactElement, useState } from "react";
 
-export default function useMultistepForm(steps: ReactElement[]) {
+
+// Defining the return type of the custom hook
+type MultistepFormReturnType = {
+  currentStepIndex: number,
+  next: () => void,
+  step: ReactElement,
+  isLastStep: boolean,
+}
+
+
+// Defining a custom hook that takes an array of React elements as input
+export default function useMultistepForm(steps: ReactElement[]): MultistepFormReturnType {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  function next() {
-    setCurrentStepIndex((i) => {
-      if (i >= steps.length - 1) {
-        return i;
-      }
-      return i + 1;
-    });
+
+  
+  //handle next and previous button clicks
+  const next = (): void => {
+    if (currentStepIndex < steps.length - 1) {
+      setCurrentStepIndex(currentStepIndex + 1);
+    }
   }
 
-  function prev() {
-    setCurrentStepIndex((i) => {
-      if (i <= 0) {
-        return i;
-      }
-      return i - 1;
-    });
-  }
-
-//   function goto(index: number) {
-//     setCurrentStepIndex(index);
-//   }
-
+  //Returning the required entities
   return {
     currentStepIndex,
     next,
-    prev,
-    // goto,
     step: steps[currentStepIndex],
-    NofSteps: steps.length,
-    isFirstStep : currentStepIndex === 0,
     isLastStep : currentStepIndex === steps.length-1,
   };
 }
