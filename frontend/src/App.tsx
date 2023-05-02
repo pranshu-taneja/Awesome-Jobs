@@ -1,11 +1,11 @@
 import "./App.css";
 import Form from "./components/Form";
 import JobListing from "./components/JobListing";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {  HashRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="flex h-[100vh] justify-center">
         <div>
           <Routes>
@@ -14,7 +14,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 export default App;

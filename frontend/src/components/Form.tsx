@@ -119,10 +119,10 @@ export default function Form() {
         </button>
         {/* //------------------- Toggle Form Visibility ------------------- */}
 
-        
+
         {/* //------------------- Job Listing redirect Button ------------------- */}
         <button className="fixed top-16 right-16 rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
-          <a href="/joblisting">Job Listing Page</a>
+          <a href="/#/joblisting">Job Listing Page</a>
         </button>
         {/* //------------------- Job Listing redirect Button ------------------- */}
       </div>
