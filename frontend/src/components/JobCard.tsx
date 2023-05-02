@@ -2,7 +2,7 @@ import { useState } from "react";
 import NetflixImage from "../assets/netflix.png";
 import axios from "axios";
 import EDIT2 from "../assets/edit2.png";
-import DELETE from "../assets/delete.png";
+import DELETE from "../assets/Delete.png";
 
 type CardStructer = {
   JobTitle: string;
