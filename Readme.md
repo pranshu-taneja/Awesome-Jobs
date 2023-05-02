@@ -7,7 +7,7 @@
 1. Run the project `npm run dev`
 
 
-ScreenShots:
+# **`ScreenShots:`**
 
 # **Create Job Homepage**
 <a href="https://ibb.co/HVGZWvM"><img src="https://i.ibb.co/PN1k7pb/Screenshot-5.png" alt="Screenshot-5" border="0"></a>
