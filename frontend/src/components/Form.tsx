@@ -102,17 +102,32 @@ export default function Form() {
   };
   //------------------- State Management for Pop Up of Form -------------------
 
+
+  //------------------- Job Listing Page Redirect Button -------------------
+
+  //------------------- Job Listing Page Redirect Button -------------------
   return (
     <div>
       
-      {/* //------------------- Toggle Form Visibility ------------------- */}
-      <button 
-        className="fixed top-16 left-16 rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
-        onClick={toggleCardVisibility}
-        >
-          Create Job
-      </button>
-      {/* //------------------- Toggle Form Visibility ------------------- */}
+      <div>
+        {/* //------------------- Toggle Form Visibility ------------------- */}
+        <button
+          className="fixed top-16 left-16 rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white"
+          onClick={toggleCardVisibility}
+          >
+            Create Job
+        </button>
+        {/* //------------------- Toggle Form Visibility ------------------- */}
+
+        
+        {/* //------------------- Job Listing redirect Button ------------------- */}
+        <button className="fixed top-16 right-16 rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
+          <a href="/joblisting">Job Listing Page</a>
+        </button>
+        {/* //------------------- Job Listing redirect Button ------------------- */}
+      </div>
+
+
 
       {/* //------------------- Form ------------------- */}
       <div 
