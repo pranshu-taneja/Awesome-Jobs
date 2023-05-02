@@ -92,8 +92,8 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             required
-            style={{ width: `${CardData.JobTitle.length}ch` }}
-            className="font-[400] font-poppins text-[24px]/[32px] text-FontColor"
+            style={{ width: `${CardData.JobTitle.length}ch`}}
+            className={`font-[400] font-poppins text-[24px]/[32px] text-FontColor ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             value={CardData.JobTitle}
             onChange={(e) => {
               UpdateFields({ JobTitle: e.target.value });
@@ -103,7 +103,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
           {/* //Edit Button */}
           <div className="flex justify-end">
             <button onClick={setisDisabled.bind(null, !isDisabled)}>
-              <img src={EDIT2} alt="Edit" className="w-[28px] h-[28px] " />
+              <img src={EDIT2} alt="Edit" className="w-[28px] h-[28px]" />
             </button>
             {/* //Delete Button */}
             <button
@@ -124,7 +124,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             required
-            className="font-[400] font-[16px]/[24px] font-poppins"
+            className={`font-[400] font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             style={{ width: `${CardData.CompanyName.length + 1}ch` }}
             value={CardData.CompanyName}
             onChange={(e) => {
@@ -136,7 +136,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             required
-            className="font-[400] font-[16px]/[24px] font-poppins inline"
+            className={`font-[400] font-[16px]/[24px] font-poppins inline ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             style={{ width: `${CardData.Industry.length + 1}ch` }}
             value={CardData.Industry}
             onChange={(e) => {
@@ -151,7 +151,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
         <div>
           <input
             type="text"
-            className="font-[16px]/[24px] font-poppins text-pholder"
+            className={`font-[16px]/[24px] font-poppins text-pholder ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             style={{ width: `${CardData.Location.length + 1}ch` }}
             value={CardData.Location}
             disabled={isDisabled}
@@ -164,7 +164,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             style={{ width: `${CardData.RemoteType.toString().length}ch` }}
-            className="font-[16px]/[24px] font-poppins text-pholder text-center"
+            className={`font-[16px]/[24px] font-poppins text-pholder text-center ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             value={CardData.RemoteType}
             onChange={(e) => {
               UpdateFields({ RemoteType: e.target.value });
@@ -187,7 +187,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             style={{ width: `${CardData.Experience.min.toString().length}ch` }}
-            className="font-[16px]/[24px] font-poppins"
+            className={`font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             value={CardData.Experience.min}
             onChange={(e) => {
               UpdateFields({
@@ -202,7 +202,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
           <input
             type="text"
             disabled={isDisabled}
-            className="font-[16px]/[24px] font-poppins"
+            className={`font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             style={{ width: `${CardData.Experience.max.toString().length}ch` }}
             size={CardData.Experience.max.toString().length}
             value={CardData.Experience.max}
@@ -226,7 +226,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
           <input
             type="text"
             disabled={isDisabled}
-            className="font-[16px]/[24px] font-poppins"
+            className={`font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             style={{ width: `${CardData.Salary.min.toString().length}ch` }}
             value={CardData.Salary.min}
             onChange={(e) => {
@@ -243,7 +243,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             style={{ width: `${CardData.Salary.max.toString().length}ch` }}
-            className="font-[16px]/[24px] font-poppins"
+            className={`font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             size={CardData.Salary.max.toString().length - 3}
             value={CardData.Salary.max}
             onChange={(e) => {
@@ -266,7 +266,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
             type="text"
             disabled={isDisabled}
             style={{ width: `${CardData.TotalEmployee.toString().length}ch` }}
-            className={`font-[16px]/[24px] font-poppins`}
+            className={`font-[16px]/[24px] font-poppins ${isDisabled ? 'bg-CardColor' : 'bg-gray-200'}`}
             value={CardData.TotalEmployee}
             onChange={(e) => {
               UpdateFields({ TotalEmployee: parseInt(e.target.value) });
