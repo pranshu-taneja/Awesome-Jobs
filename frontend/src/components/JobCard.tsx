@@ -286,7 +286,7 @@ export default function JobCard({...DataFetched}: CardStructer) {
               <button className="rounded-[6px] py-[8px] px-[16px] bg-prjblue text-[16px]/[24px] font-poppins font-[500] text-white">
                 Apply Now
               </button>
-              <button className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border">
+              <button className="rounded-[6px] py-[8px] px-[16px] text-[16px]/[24px] font-poppins font-[500] text-prjblue border-prjblue border ml-[24px]">
                 External Apply
               </button>
             </div>
